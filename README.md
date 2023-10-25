@@ -1,6 +1,6 @@
 # VxeTable2Excel.js
 
-This is a library to export html tables to excel sheets.
+This is a library to export html tables to excel sheets .
 
 ## Precondition
 
