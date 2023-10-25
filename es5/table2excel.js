@@ -185,7 +185,7 @@ var Table2Excel = function () {
             el = cell.el;
         var innerText = el.innerText;
 
-        var workcell = (0, _utils.mergeCells)(worksheet, colRange.from, rowRange.from + this.sheetRowBeginIndex, colRange.to, rowRange.to + this.sheetRowBeginIndex);
+        var workcell = (0, _utils.mergeCells)(worksheet, colRange.from, rowRange.from + _this4.sheetRowBeginIndex, colRange.to, rowRange.to + _this4.sheetRowBeginIndex);
         var cellStyle = getComputedStyle(el);
 
         workcell.value = innerText;
@@ -195,7 +195,7 @@ var Table2Excel = function () {
       });
 
       // added 20231025,by lkg
-      this.sheetRowBeginIndex = this.sheetRowBeginIndex + totalRows;
+      _this4.sheetRowBeginIndex = this.sheetRowBeginIndex + totalRows;
 
     }
   }, {
