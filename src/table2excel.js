@@ -16,6 +16,7 @@ const DEFAULT_OPTIONS = {
   plugins: [...Object.values(plugins)]
 }
 
+
 export default class Table2Excel {
 
   constructor (selector = 'table', options = {}) {
