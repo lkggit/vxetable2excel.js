@@ -10,7 +10,7 @@ It has to be a row * column table
 
 1. able to export with width, alignment and colors
 2. extendable
-
+   
 ## Dependencies
 
 [ExcelJS](https://github.com/guyonroche/exceljs)
