@@ -18,6 +18,7 @@ var _plugins = require('./plugins');
 
 var _plugins2 = _interopRequireDefault(_plugins);
 
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -47,7 +48,7 @@ var Table2Excel = function () {
     _classCallCheck(this, Table2Excel);
 
     this.tables = Array.from(typeof selector === 'string' ? document.querySelectorAll(selector) : selector);
-
+    
     this.options = Object.assign({}, DEFAULT_OPTIONS, options);
 
     this.plugins = {};
@@ -84,13 +85,19 @@ var Table2Excel = function () {
 
       var workbook = new _exceljs2.default.Workbook(); // create workbook
 
+      // added 20231025,by lkg
+      this.sheetRowBeginIndex=0; 
+      var worksheet = workbook.addWorksheet('Sheet ' + 1);
+
+
       Object.assign(workbook, options);
 
       // workbookCreated plugins
       this._invokePlugin('workbookCreated', { workbook: workbook, tables: tables });
 
       tables.forEach(function (table, index) {
-        var worksheet = workbook.addWorksheet('Sheet ' + (index + 1));
+       
+       //var worksheet = workbook.addWorksheet('Sheet ' + (index + 1));
 
         // worksheetCreated plugins
         _this3._invokePlugin('worksheetCreated', { worksheet: worksheet, table: table });
@@ -177,7 +184,7 @@ var Table2Excel = function () {
             el = cell.el;
         var innerText = el.innerText;
 
-        var workcell = (0, _utils.mergeCells)(worksheet, colRange.from, rowRange.from, colRange.to, rowRange.to);
+        var workcell = (0, _utils.mergeCells)(worksheet, colRange.from, rowRange.from + this.sheetRowBeginIndex, colRange.to, rowRange.to + this.sheetRowBeginIndex);
         var cellStyle = getComputedStyle(el);
 
         workcell.value = innerText;
@@ -185,6 +192,10 @@ var Table2Excel = function () {
         // workcellCreated
         _this4._invokePlugin('workcellCreated', { workcell: workcell, cell: el, rowRange: rowRange, colRange: colRange, cellStyle: cellStyle });
       });
+
+      // added 20231025,by lkg
+      this.sheetRowBeginIndex = this.sheetRowBeginIndex + totalRows;
+
     }
   }, {
     key: 'export',
