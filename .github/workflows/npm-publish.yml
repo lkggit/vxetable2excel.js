@@ -26,6 +26,7 @@ jobs:
       - run: npm run build
 
   publish-npm:
+    if: "contains(github.event.head_commit.message, '[build]')"
     needs: build
     runs-on: ubuntu-latest
     steps:
