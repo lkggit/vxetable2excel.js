@@ -48,6 +48,9 @@ var Table2Excel = function () {
     _classCallCheck(this, Table2Excel);
 
     this.tables = Array.from(typeof selector === 'string' ? document.querySelectorAll(selector) : selector);
+
+    // added 20231025,by lkg
+    this.sheetRowBeginIndex=0; 
     
     this.options = Object.assign({}, DEFAULT_OPTIONS, options);
 
@@ -85,8 +88,6 @@ var Table2Excel = function () {
 
       var workbook = new _exceljs2.default.Workbook(); // create workbook
 
-      // added 20231025,by lkg
-      this.sheetRowBeginIndex=0; 
       var worksheet = workbook.addWorksheet('Sheet ' + 1);
 
 
