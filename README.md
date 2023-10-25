@@ -1,7 +1,7 @@
 # VxeTable2Excel.js
 
 This is a library to export html tables to excel sheets .
-
+ 
 ## Precondition
 
 It has to be a row * column table
