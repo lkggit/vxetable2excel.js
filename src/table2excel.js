@@ -17,6 +17,7 @@ const DEFAULT_OPTIONS = {
 }
 
 
+
 export default class Table2Excel {
 
   constructor (selector = 'table', options = {}) {
@@ -44,6 +45,12 @@ export default class Table2Excel {
   toExcel () {
     const { tables, options } = this
     const workbook = new ExcelJS.Workbook() // create workbook
+    
+    //const worksheet = workbook.addWorksheet(`Sheet ${index + 1}`)
+    const worksheet = workbook.addWorksheet(`Sheet 1`)
+
+    // added 20231025,by lkg
+    const sheetRowIndex = 0;
 
     Object.assign(workbook, options)
 
@@ -51,7 +58,7 @@ export default class Table2Excel {
     this._invokePlugin('workbookCreated', { workbook, tables })
 
     tables.forEach((table, index) => {
-      const worksheet = workbook.addWorksheet(`Sheet ${index + 1}`)
+      // const worksheet = workbook.addWorksheet(`Sheet ${index + 1}`)
 
       // worksheetCreated plugins
       this._invokePlugin('worksheetCreated', { worksheet, table })
@@ -131,7 +138,7 @@ export default class Table2Excel {
     cells.forEach(cell => {
       const { rowRange, colRange, el } = cell
       const { innerText } = el
-      const workcell = mergeCells(worksheet, colRange.from, rowRange.from, colRange.to, rowRange.to)
+      const workcell = mergeCells(worksheet, colRange.from, rowRange.from + sheetRowIndex, colRange.to, rowRange.to + sheetRowIndex)
       const cellStyle = getComputedStyle(el)
 
       workcell.value = innerText
@@ -139,6 +146,9 @@ export default class Table2Excel {
       // workcellCreated
       this._invokePlugin('workcellCreated', { workcell, cell: el, rowRange, colRange, cellStyle })
     })
+
+     // added 20231025,by lkg
+     sheetRowIndex = sheetRowIndex + totalRows;
   }
 
   export (fileName, ext) {
