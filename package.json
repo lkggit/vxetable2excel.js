@@ -1,5 +1,5 @@
 {
-  "name": "table2excel.js",
+  "name": "vxetable2excel.js",
   "version": "1.0.0",
   "description": "",
   "main": "es5/index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jackgit/table2excel.js.git"
+    "url": "git+https://github.com/lkggit/vxetable2excel.js.git"
   },
   "keywords": [
     "table",
@@ -19,12 +19,12 @@
     "xlsx",
     "xls"
   ],
-  "author": "ygjack414@hotmail.com",
+  "author": "lkgforex@163.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jackgit/table2excel.js/issues"
+    "url": "https://github.com/lkggit/vxetable2excel.js/issues"
   },
-  "homepage": "https://github.com/jackgit/table2excel.js#readme",
+  "homepage": "https://github.com/lkggit/vxetable2excel.js#readme",
   "dependencies": {
     "file-saver": "^1.3.3"
   },
