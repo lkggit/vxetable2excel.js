@@ -34,13 +34,13 @@ npm i exceljs
 then, install table2excel.js:
 
 ```bash
-npm i table2excel.js
+npm i vxetable2excel.js
 ```
 
 use in your code like:
 
 ```js
-import Table2Excel from 'table2excel.js'
+import Table2Excel from 'vxetable2excel.js'
 new Table2Excel('table').export()
 ```
 
