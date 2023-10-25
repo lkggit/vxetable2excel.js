@@ -195,7 +195,7 @@ var Table2Excel = function () {
       });
 
       // added 20231025,by lkg
-      _this4.sheetRowBeginIndex = this.sheetRowBeginIndex + totalRows;
+      _this4.sheetRowBeginIndex = _this4.sheetRowBeginIndex + totalRows;
 
     }
   }, {
